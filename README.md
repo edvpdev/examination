@@ -4,8 +4,8 @@
 - git init
 - git clone 'git@github.com:edvpdev/examination.git'
 - cd into examination/backend folder, make .env file with:
-  - MONGO_URI = <YOUR MONGO DB URL>
-  - JWT_SECRET = <YOUR
+  - MONGO_URI = &lt;YOUR MONGO DB URL&gt;
+  - JWT_SECRET = &lt;YOUR SECRET TOKEN&gt;
   - PORT = 3000
 
 
