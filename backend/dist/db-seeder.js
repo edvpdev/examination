@@ -103,11 +103,8 @@ const importData = async () => {
         });
         await ScorecardModel.insertMany(scorecards);
         const finalScorecards = await ScorecardModel.find({});
-        console.log(finalScorecards);
-        if (createdCategories && updatedQuestions && finalScorecards & newExams) {
-            console.log('Data Imported!');
-            process.exit();
-        }
+        console.log('Data Imported!');
+        process.exit();
     }
     catch (error) {
         console.error(`${error}`);
