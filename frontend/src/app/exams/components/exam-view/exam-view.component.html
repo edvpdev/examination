@@ -1,0 +1,46 @@
+<div class="root">
+  <button
+    (click)="goBack()"
+    class="back-button"
+    mat-flat-button
+    color="primary"
+  >
+    BACK
+  </button>
+  <mat-card class="example-card">
+    <mat-card-header>{{ exam?.title }}</mat-card-header>
+    <form [formGroup]="examTest">
+      <!--  formArrayName="formArray" -->
+      <mat-vertical-stepper [linear]="false" formArrayName="answers" #stepper>
+        <mat-step
+          *ngFor="let question of examQuestions; let i = index; trackBy: track"
+          formGroupName="{{ i }}"
+          [stepControl]="answers && answers?.get([i])"
+        >
+          <ng-template matStepLabel>{{ question.title }} </ng-template>
+          <p>
+            {{ question.questionText }}
+          </p>
+          <mat-form-field appearance="outline">
+            <mat-label>Answer</mat-label>
+            <textarea matInput formControlName="answer" #answer></textarea>
+          </mat-form-field>
+          <div>
+            <button mat-button>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>Thank you for your time!</p>
+          <button
+            (click)="submit(exam, examQuestions)"
+            mat-flat-button
+            color="primary"
+          >
+            SUBMIT
+          </button>
+        </mat-step>
+      </mat-vertical-stepper>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,83 @@
+<div class="root">
+  <button
+    (click)="goBack()"
+    mat-flat-button
+    class="back-button"
+    color="primary"
+  >
+    BACK
+  </button>
+  <mat-card class="exam-edit-card">
+    <mat-card-header>
+      <mat-card-title>Edit Question</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="exam-content">
+      <form [formGroup]="questionEdit">
+        <mat-form-field>
+          <mat-label>Question Title</mat-label>
+          <input
+            formControlName="title"
+            matInput
+            value="{{ question ? question.title : '' }}"
+          />
+        </mat-form-field>
+        <mat-accordion class="questions-accordion">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="category-title">
+                <span>Categories </span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-selection-list formControlName="selectedCategory">
+              <mat-list-option
+                *ngFor="let category of categories; let i = index"
+                [value]="category.title"
+              >
+                {{ category.title }}
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion class="questions-accordion">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title class="category-title">
+                <span>Exams </span>
+                <span>Selected: {{ question && question.exams.length }}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-selection-list formControlName="selectedExams">
+              <mat-list-option
+                *ngFor="let exam of exams; let i = index"
+                [value]="exam.title"
+              >
+                {{ exam.title }}
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="score-and-text">
+          <mat-form-field>
+            <mat-label>Max score:</mat-label>
+            <input
+              type="number"
+              value="{{ question ? question.maxScore : 1 }}"
+              min="1"
+              matInput
+              formControlName="maxScore"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Question Text:</mat-label>
+            <textarea formControlName="questionText" matInput>{{
+              question ? question.questionText : ''
+            }}</textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="exam-actions-buttons">
+      <button (click)="save()" mat-flat-button color="primary">SAVE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,28 @@
+.root {
+  min-height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.title {
+  margin: 1rem 0rem;
+  padding: 1rem;
+}
+
+.scorecards-list {
+  margin-bottom: 1rem;
+}
+
+.scorecard-card {
+  margin: 2rem 0rem;
+
+  .scorecard-content {
+    margin-left: 1rem;
+  }
+
+  .scorecard-actions {
+    margin-left: 1rem;
+    margin-bottom: 0.25rem !important;
+  }
+}

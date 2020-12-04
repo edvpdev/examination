@@ -1,0 +1,146 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1100px;
+
+// Set text color based on background
+@function set-text-color($color) {
+  @if (lightness($color) > 60) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Set background & text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
+
+// Z-indexes
+
+$zIndexes: (1, 2, 3, 4, 5);
+
+@each $index in $zIndexes {
+  .z-#{$index} {
+    z-index: #{$index};
+  }
+}
+
+// Margin & Padding
+$spaceamounts: (1, 2, 3, 4, 5);
+
+@each $space in $spaceamounts {
+  // all around marin
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+
+  // Vertical Margin
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+
+  .mx-#{$space} {
+    margin: 0 #{$space}rem;
+  }
+
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+
+  .mt-#{$space} {
+    margin-top: #{$space}rem;
+  }
+
+  .ml-#{$space} {
+    margin-left: #{$space}rem;
+  }
+
+  .mr-#{$space} {
+    margin-right: #{$space}rem;
+  }
+
+  // All around padding
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
+
+  .px-#{$space} {
+    padding: 0 #{$space}rem;
+  }
+
+  .pb-#{$space} {
+    padding-bottom: #{$space}rem;
+  }
+
+  .pt-#{$space} {
+    padding-top: #{$space}rem;
+  }
+
+  .pl-#{$space} {
+    padding-left: #{$space}rem;
+  }
+
+  .pr-#{$space} {
+    padding-right: #{$space}rem;
+  }
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+// Shadows
+@function diffuse-shadows($size, $x, $y, $blur, $color, $opacity) {
+  $val: #{$x/$size}px #{$y/$size}px #{$blur}px rgba($color, $opacity/$size);
+  @if $size != 1 {
+    @for $i from $size - 1 through 1 {
+      $val: #{$val}, #{$x/$i}px #{$y/$i}px #{$blur}px rgba($color, $opacity/$i);
+    }
+  }
+  @return $val;
+}
+
+@mixin shadow($size, $x, $y, $blur, $color, $opacity) {
+  box-shadow: diffuse-shadows($size, $x, $y, $blur, $color, $opacity);
+}
+
+// Device widths
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}

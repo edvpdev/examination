@@ -1,0 +1,30 @@
+<div class="root">
+  <h1 class="title">Scorecards</h1>
+  <mat-paginator
+    (page)="setPage($event)"
+    [length]="pageLength"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+  >
+  </mat-paginator>
+  <div class="scorecards-list">
+    <mat-card *ngFor="let scorecard of scorecards" class="scorecard-card">
+      <mat-card-header>
+        <mat-card-title>{{ scorecard.title }}</mat-card-title>
+        <mat-card-subtitle>{{ scorecard.status }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="scorecard-content">
+        <p>Started at: {{ scorecard.createdAt.split('T')[0] }}</p>
+      </mat-card-content>
+      <mat-card-actions class="scorecard-actions">
+        <button
+          (click)="openScorecard(scorecard._id)"
+          mat-flat-button
+          color="primary"
+        >
+          OPEN
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

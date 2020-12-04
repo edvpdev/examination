@@ -1,0 +1,57 @@
+<div class="root">
+  <button
+    (click)="goBack()"
+    mat-flat-button
+    class="back-button"
+    color="primary"
+  >
+    BACK
+  </button>
+  <mat-card class="exam-edit-card">
+    <mat-card-header>
+      <mat-card-title>Edit Exam</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="exam-content">
+      <form [formGroup]="examEdit">
+        <mat-form-field>
+          <mat-label>Exam Title</mat-label>
+          <input
+            formControlName="title"
+            matInput
+            value="{{ exam ? exam.title : '' }}"
+          />
+        </mat-form-field>
+        <p>Questions:</p>
+        <mat-accordion
+          class="questions-accordion"
+          formArrayName="formCategories"
+        >
+          <mat-expansion-panel
+            *ngFor="
+              let questionGroup of objectKeys(sortedQuestions);
+              let i = index
+            "
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title class="category-title">
+                <span>{{ questionGroup }}</span>
+                <span>Selected: 3</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-selection-list formControlName="{{ questionGroup }}">
+              <mat-list-option
+                *ngFor="let question of sortedQuestions[questionGroup]"
+                [value]="question.title"
+              >
+                {{ question.title }}
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="exam-actions-buttons">
+      <button (click)="save()" mat-flat-button color="primary">SAVE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

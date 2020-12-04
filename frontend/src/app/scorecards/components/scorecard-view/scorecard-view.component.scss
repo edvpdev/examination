@@ -1,0 +1,60 @@
+.root {
+  min-height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.back-button {
+  margin: 1rem 0rem;
+}
+
+mat-card > mat-card-actions:last-child {
+  padding: 1rem;
+}
+
+.scorecard-review-card {
+  margin-top: 1rem;
+
+  .scorecard-actions-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.scorecard-content {
+  .mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+    border-top: 2px solid #673bb7;
+  }
+
+  .scorecard-question-list-item {
+    height: auto;
+    padding: 1rem;
+    margin-top: -1rem;
+
+    .question-evaluation {
+      display: flex;
+
+      .teacher-score-input {
+        width: 90px;
+      }
+
+      .max-score-input {
+        margin-left: 1rem;
+        width: 90px;
+      }
+    }
+  }
+
+  .notes-and-bonus-score {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .notes,
+    .bonus-score {
+      width: 40%;
+    }
+  }
+}

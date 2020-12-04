@@ -1,0 +1,27 @@
+.root {
+  min-height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.back-button {
+  margin: 1rem 0rem;
+}
+
+mat-card > mat-card-actions:last-child {
+  padding: 1rem;
+}
+
+.category-edit-card {
+  margin-top: 1rem;
+
+  .category-actions-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.category-content {
+  padding: 0rem 1rem;
+}

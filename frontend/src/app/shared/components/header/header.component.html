@@ -1,0 +1,41 @@
+<mat-toolbar class="header" color="primary">
+  <div class="header__nav">
+    <a class="header__nav__logo" href="/">Examination App</a>
+    <span class="example-spacer"></span>
+    <mat-nav-list class="header__nav__nav-list">
+      <a
+        *ngIf="isAuthenticated()"
+        mat-list-item
+        class="header__nav__nav-list__item"
+        href="/exams"
+        >Exams</a
+      >
+      <a
+        *ngIf="isAdmin() || isTeacher()"
+        mat-list-item
+        class="header__nav__nav-list__item"
+        href="/scorecards"
+        >Scorecards</a
+      >
+      <a
+        *ngIf="isAdmin()"
+        mat-list-item
+        class="header__nav__nav-list__item"
+        href="/admin"
+        >Admin</a
+      >
+    </mat-nav-list>
+  </div>
+  <div *ngIf="isAuthenticated()" class="header__user-details">
+    <span>{{ displayName() }}</span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with heart icon"
+      (click)="logout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,107 @@
+<div class="root">
+  <button
+    (click)="goBack()"
+    mat-flat-button
+    class="back-button"
+    color="primary"
+  >
+    BACK
+  </button>
+  <mat-card class="scorecard-review-card">
+    <mat-card-header>
+      <mat-card-title>Review {{ scorecard && scorecard.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="scorecard-content">
+      <form [formGroup]="scorecardReview">
+        <mat-accordion formArrayName="formCategories">
+          <mat-expansion-panel
+            *ngFor="
+              let answerGroup of objectKeys(sortedAnswers);
+              let j = index;
+              trackBy: track1
+            "
+            formGroupName="{{ j }}"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> {{ answerGroup }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list
+              class="scorecard-question-list"
+              formArrayName="{{ answerGroup }}"
+            >
+              <div
+                *ngFor="
+                  let answer of sortedAnswers[answerGroup];
+                  let i = index;
+                  trackBy: track
+                "
+                class="list-item-wrapper"
+                formGroupName="{{ i }}"
+              >
+                <h3 matSubheader>{{ answer.title }}</h3>
+                <div class="scorecard-question-list-item">
+                  <p>{{ answer.questionText }}</p>
+                  <span><strong>Answer:</strong></span>
+                  <p class="scorecard-question-list-item-answer">
+                    {{
+                      answer.questionAnswer
+                        ? answer.questionAnswer
+                        : 'Not answered'
+                    }}
+                  </p>
+                  <div class="question-evaluation">
+                    <mat-form-field class="teacher-score-input">
+                      <mat-label>Given score</mat-label>
+                      <input
+                        type="number"
+                        matInput
+                        placeholder="Score"
+                        max="{{ answer.maxScore }}"
+                        value="{{ answer.title }}"
+                        formControlName="{{ answer.title }}"
+                        min="0"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="max-score-input">
+                      <mat-label>Max score</mat-label>
+                      <input
+                        type="number"
+                        matInput
+                        placeholder="Score"
+                        value="{{ answer.maxScore }}"
+                        disabled
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div class="notes-and-bonus-score">
+          <mat-form-field class="notes">
+            <mat-label>Notes</mat-label>
+            <textarea matInput formControlName="notes"></textarea>
+          </mat-form-field>
+          <mat-form-field class="bonus-score">
+            <mat-label>Bonus Score</mat-label>
+            <input
+              type="number"
+              formControlName="bonusScore"
+              matInput
+              value="0"
+            />
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="scorecard-actions-buttons">
+      <button (click)="saveScorecard()" mat-flat-button color="primary">
+        SAVE
+      </button>
+      <button (click)="reviewScorecard()" mat-flat-button color="primary">
+        REVIEW
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

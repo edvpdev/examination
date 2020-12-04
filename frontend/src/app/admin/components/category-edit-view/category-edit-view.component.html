@@ -1,0 +1,26 @@
+<div class="root">
+  <button
+    (click)="goBack()"
+    mat-flat-button
+    class="back-button"
+    color="primary"
+  >
+    BACK
+  </button>
+  <mat-card class="category-edit-card">
+    <mat-card-header>
+      <mat-card-title>Edit</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="category-content">
+      <form [formGroup]="categoryEdit">
+        <mat-form-field>
+          <mat-label>Category Title</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="category-actions-buttons">
+      <button (click)="save()" mat-flat-button color="primary">SAVE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

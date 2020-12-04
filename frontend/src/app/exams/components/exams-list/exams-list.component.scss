@@ -1,0 +1,28 @@
+.root {
+  min-height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.exams-list-title {
+  margin: 1rem 0rem;
+  padding: 1rem;
+}
+
+.exam-list {
+  margin-bottom: 1rem;
+}
+
+.exam-card {
+  margin: 2rem 0rem;
+
+  .exam-card-content {
+    margin-left: 1rem;
+  }
+
+  .exam-card-actions {
+    margin-left: 1rem;
+    margin-bottom: 0.25rem !important;
+  }
+}

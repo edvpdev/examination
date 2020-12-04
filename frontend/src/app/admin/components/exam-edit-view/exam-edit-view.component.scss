@@ -1,0 +1,39 @@
+.root {
+  min-height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.back-button {
+  margin: 1rem 0rem;
+}
+
+mat-card > mat-card-actions:last-child {
+  padding: 1rem;
+}
+
+.exam-edit-card {
+  margin-top: 1rem;
+
+  .exam-actions-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.exam-content {
+  padding: 0rem 1rem;
+
+  .questions-accordion {
+    .mat-expansion-panel:not([class*='mat-elevation-z']) {
+      box-shadow: none;
+      border-top: 2px solid #673bb7;
+    }
+
+    .mat-expansion-panel-header-title {
+      justify-content: space-between;
+      display: flex;
+    }
+  }
+}

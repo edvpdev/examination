@@ -1,0 +1,28 @@
+<div class="root">
+  <h1 class="exams-list-title">Exams</h1>
+  <mat-paginator
+    (page)="setPage($event)"
+    [length]="pageLength"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+  >
+  </mat-paginator>
+  <div class="exam-list">
+    <mat-card *ngFor="let exam of exams" class="exam-card">
+      <mat-card-header>
+        <mat-card-title>{{ exam.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="exam-card-content">
+        <p>
+          Num. of questions:
+          <span>{{ exam.questions.length }}</span>
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="exam-card-actions">
+        <button (click)="startExam(exam._id)" mat-flat-button color="primary">
+          Start
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

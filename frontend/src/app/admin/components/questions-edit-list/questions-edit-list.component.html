@@ -1,0 +1,29 @@
+<mat-card class="questions-edit-list-card">
+  <mat-card-header class="card-header">
+    <mat-card-title> Questions </mat-card-title>
+    <button (click)="new()" mat-flat-button color="primary">NEW</button>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+    <div class="list" role="list">
+      <div *ngFor="let question of questions" class="list-item" role="listitem">
+        <div class="item-title">{{ question.title }}</div>
+        <div class="controls">
+          <span>Exams: {{ question.exams.length }}</span>
+          <mat-icon (click)="edit(question._id)" color="gray">create</mat-icon>
+          <mat-icon (click)="delete(question._id, question.exams.length)"
+            >delete</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-paginator
+      (page)="setPage($event)"
+      [length]="pageLength"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+    >
+    </mat-paginator>
+  </mat-card-footer>
+</mat-card>
