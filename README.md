@@ -1,13 +1,16 @@
 # EXAMINATION-APP
 
 # CLONE THE PROJECT
+- git init
 - git clone git@github.com:edvpdev/examination.git
 - cd into examination/backend folder, make .env file with:
   - MONGO_URI = <YOUR MONGO DB URL>
-  - JWT_SECRET = viensdutrys
+  - JWT_SECRET = <YOUR
   - PORT = 3000
 
+
 # LAUNCH NESTJS SERVER
+
 - RUN: npm install
 To fill database with test data:
 - RUN: npm run populate-db
@@ -15,6 +18,7 @@ To launch server:
 - RUN: npm run start:dev
 
 # LAUNCH ANGULAR CLIENT
+
 cd into examination/frontend folder
 - RUN: npm install
 To launch client
@@ -22,6 +26,7 @@ To launch client
 follow Angular URL
 
 # TEST CREDENTIALS (from backend/db-data.ts)
+
 email: 'teacher@example.com',
 password: 'teacher'
 
