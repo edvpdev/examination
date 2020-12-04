@@ -1,4 +1,4 @@
-# examination
+# EXAMINATION-APP
 
 # CLONE THE PROJECT
 git clone git@github.com:edvpdev/examination.git
