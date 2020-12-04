@@ -16,7 +16,7 @@ import { Exams, Questions, Categories, Scorecards, Users } from './db-data';
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      'mongodb+srv://demo1234:belekas123@demo.wizjc.mongodb.net/examination-app?retryWrites=true&w=majority',
+      process.env.MONGO_URI,
       {
         useUnifiedTopology: true,
         useNewUrlParser: true,
