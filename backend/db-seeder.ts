@@ -12,9 +12,12 @@ import * as mongoose from 'mongoose';
 import { Model } from 'mongoose';
 import * as bcryptjs from 'bcryptjs';
 import { Exams, Questions, Categories, Scorecards, Users } from './db-data';
+import * as dotenv from 'dotenv';
 
 const connectDB = async () => {
+  console.log(process.env.MONGO_URI);
   try {
+    console.log(process.env.MONGO_URI);
     const conn = await mongoose.connect(
       process.env.MONGO_URI,
       {
@@ -148,5 +151,6 @@ const importData = async () => {
   }
 };
 
+dotenv.config();
 connectDB();
 importData();
