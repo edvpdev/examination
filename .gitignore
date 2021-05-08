@@ -13,9 +13,13 @@ node_modules
 # production
 /frontend/build
 /frontend/dist
+/frontend/dist/
 
 #
 /backend/dist
+/backend/dist/
+backend/dist
+backend/dist/
 
 # misc
 .DS_Store
@@ -28,3 +32,5 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+backend/dist/src/main.js.map
+backend/dist/src/main.js.map
